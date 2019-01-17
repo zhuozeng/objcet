@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--第一种方式：手动创建标签-->
+<!--<script>
+    /*手动创建标签:默认的标签的类型都是行级元素*/
+    document.createElement("header");
+    document.createElement("nav");
+    document.createElement("main");
+    document.createElement("article");
+    document.createElement("aside");
+    document.createElement("footer");
+</script>-->
+<!--第二种方式：引入第三方插件-->
+<!--html5shiv.min.js:在默认情况下，IE8及以下的IE版本不支持HTML5,引入这个文件就可以做到兼容-->
+    <script src="../js/html5shiv.min.js"></script>
+    <header>头部</header>
+    <nav>导航</nav>
+    <main>
+        <article>左边</article>
+        <aside>右边</aside>
+    </main>
+    <footer>底部</footer>
+</body>
+</html>

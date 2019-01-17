@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        用户名:  <input type="text" name="userName">
+        密码:  <input type="password" name="userPwd">
+        <!-- email提供了默认的电子邮件的完整验证:要求必须包含@符号,同时必须包含服务器名称,如果不能满足验证则会阻止当前数据提交 -->
+        邮箱:   <input type="email">
+        <!-- tel他并不是来实现验证 它的本质是在移动端打开数字键盘  限制了用户只能输入数字 -->
+        <!-- 查看需要用手机查看 -->
+        电话<input type="tel">
+        <!-- 验证只能输入合法的网址  必须包含 http://    -->
+        网址<input type="url">
+        <!-- number: 只能输入数字(包含小数点),不能输入其他的字符
+        max:最大值
+        min:最小值
+        value:=默认值 -->
+        数量:  <input type="number" value="60" max="100" min="0">
+        <!-- search: 可以提供更人性化的输入体验 -->
+        请输入商品名称:  <input type="search">
+        <!-- range:范围 -->
+        范围:  <input type="range"  max="100"  min="0"  value="50">
+        
+        颜色:  <input type="color">
+        <!-- 日期时间相关 -->
+            <!-- time:  时间  时分秒 -->
+            时间: <input type="time">
+        <!-- date: 日期  年月日 -->
+            日期:  <input type="date">
+        <!-- datetime:大多数浏览器都不支持datetime  用于屏幕阅读器 -->
+        时间日期:  <input type="datetime">
+        <!-- datetime-local: 日期和时间 -->
+            日期时间: <input type="date-local">
+            月份:  <input type="month">
+            星期:  <input type="week">
+            <!-- 提交 -->
+            <input type="submit">
+
+
+
+
+    </form>
+</body>
+</html>

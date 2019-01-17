@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="myForm">
+        <!-- placeholder:提示文本 ,提示占位 -->
+        <!-- autofocus:自动获取焦点 -->
+        <!-- autocomplate:自动完成:   on打开   off关闭 -->
+        <!-- 1,必须成功提交过:提交过后才会记录 -->
+        <!-- 2,当前添加autocomplete的元素必须要有name属性 -->
+        用户名:  <input type="text" name="userName" palcehouder="请输入用户名" autofocus autocomplete="on">
+        <!-- tel并不会实现验证,仅仅是在移动端能弹出数字键盘 -->
+        <!-- required:必须输入,如果没有输入则会阻止当前数据提交 -->
+        <!-- pattern:正则表达式 -->
+        <!-- *:代表任意个
+        ?:代表0个或者1个
+        +:代表1个或者多个 -->
+            手机号:     <input type="tel" name="userPhone" required pattern="^(\+86)?1\d{10}$">
+            multiple:可以选择多个问阿金
+    </form>
+</body>
+</html>

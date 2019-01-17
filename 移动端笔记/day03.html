@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+
+1、drag
+    1、实现拖拽的前提条件是什么？    draggable="true"
+    2、被拖拽元素事件  +  目标元素事件
+    被拖拽元素事件：
+        ondragstart   开始拖拽
+        ondrag        持续拖拽
+        ondragleave   鼠标离开被拖拽元素
+        ondragend     鼠标松开拖拽结束
+    目标元素事件:
+        ondragenter   进入目标元素事件
+        ondrop        (结束：阻止浏览器默认行为)  结束拖拽
+        ondragleave   离开目标元素
+        ondragover    (持续拖拽)  持续拖拽
+
+
+任意元素拖拽：只需要触发三个事件即可  ondragstart+ondragover+ondrop
+e.dataTransfer.setData  || e.dataTransfer.getData
+ondragstart    存储数据：存储的是被拖拽元素的id     e.dataTransfer.setData
+ondrop         获取刚才存储的id  e.dataTransfer.getData=====通过id找到这个元素然后进行添加
+
+
+2、sessionStorage  &&   localStorage
+    sessionStorage:
+        1、存储大小：5M
+        2、生命周期
+            a.同一个浏览器不同的窗口数据不能共享
+            b.不同浏览器数据不能共享
+            c.关闭浏览器数据不存在(关闭当前页面数据也是不存在)
+
+            d.数据是存储在当前页面的
+            e.存储的类型为字符串
+        3、方法的使用
+            window.sessionStorage.setItem("key","value")
+            window.sessionStorage.getItem("key")
+            window.sessionStorage.removeItem("key")
+
+    localStorage
+        1、存储大小：20M
+        2、生命周期
+            1、关闭窗口数据还存在，不同窗口数据可以共享
+            2、数据是存储在硬盘上，如果想删除必须认为删除
+
+
+JSON.stringify(arr2)   =========将数组转换成字符串  原理就是在数组身上打上一个引号
+JSON.parse(arr3)  ==============将字符串转换成数组对象    原理是把引号去掉
+
+
+
+3、audio||video  提供属性+方法+事件都是原生的  只能使用dom操作
+
+
+    步骤分析：
+    1、点击播放按钮
+    2、全屏
+
+    3、oncanplay  视频可以播放就执行 
+        a.video.style.display=block
+        b、获取视频的总时长 : video.duration
+        c、通过获取的总时长计算出：时分秒
+        d、将时分秒渲染在页面上
+
+    4、ontimeupdate    视频在播放或者视频播放时间在改变
+        a.获取当前视频的播放时间：video.currentTime
+        b.通过获取的视频的播放时间计算出：时分秒
+        c.将时分秒渲染在页面上
+        d.计算播放进度的宽度=video.currentTime/video.duration *100+ "%"
+
+    5、跳播
+        1、获取当前点击处的偏移值    需要使用事件源参数
+        2、计算百分比=当前点击处的偏移值/当前盒子(.bar)的总宽度
+        3、计算当前视屏播放时间(video.currentTime)=百分比*视屏总时长
+
+    6、onended    视屏一播放完毕就触发
+        1、播放变成暂停
+        2、设置当前播放时间为 0   video.currentTime=0;
+
+
+
+
+
+    </body>
+</html>
