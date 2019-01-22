@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Template • TodoMVC</title>
+		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<!-- CSS overrides - remove if you don't need it -->
+		<link rel="stylesheet" href="css/app.css">
+
+	</head>
+	<body>
+	<div id="app">
+
+		<section class="todoapp">
+			<header class="header">
+				<h1>todos任务清单</h1>
+				<!-- 输入框 -->
+				<input class="new-todo" v-model="wantOver" @keyup.enter="add" placeholder="What needs to be done?" autofocus>
+			</header>
+			<!-- This section should be hidden by default and shown when there are todos -->
+			<section class="main">
+				<input id="toggle-all"  @click="flages(!flag)" class="toggle-all" type="checkbox">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul class="todo-list">
+					<!-- These are here just to show the structure of the list items -->
+					<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
+
+					<li   v-for="item in taskList"  :key="item.id" class="completed">
+						<div class="view">
+							<input  class="toggle" type="checkbox"  :checked="flag" >
+							<label @dblclick="dbClick(item.id)">{{ item.single }}</label>
+							<button @click="deletList(item.id)" class="destroy"></button>
+						</div>
+						<div v-show="bj">
+								<input  style="display:block"  class="edit" type="text" :value="item.single" v-model="testT">
+						</div>
+
+					</li>
+
+				</ul>
+			</section>
+			<!-- This footer should hidden by default and shown when there are todos -->
+			<footer class="footer">
+				<!-- This should be `0 items left` by default -->
+				<span class="todo-count"><strong>0</strong> item left</span>
+				<!-- Remove this if you don't implement routing -->
+				<ul class="filters">
+					<li>
+						<a class="selected" href="#/">All</a>
+					</li>
+					<li>
+						<a href="#/active">Active</a>
+					</li>
+					<li>
+						<a href="#/completed">Completed</a>
+					</li>
+				</ul>
+				<!-- Hidden if no completed items are left ↓ -->
+				<button class="clear-completed">Clear completed</button>
+			</footer>
+		</section>
+		<footer class="info">
+			<p>Double-click to edit a todo</p>
+			<!-- Remove the below line ↓ -->
+			<p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+			<!-- Change this out with your name and url ↓ -->
+			<p>Created by <a href="http://todomvc.com">you</a></p>
+			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		</footer>
+		<!-- Scripts here. Don't remove ↓ -->
+	</div>
+		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="js/app.js"></script>
+		<script src="/js/vue.min.js"></script>
+		<script>
+		var vm = new Vue({
+			el:'#app',
+
+			data:{
+				flag:false,
+				testT:'',
+				wantOver:'',
+				isChecked:false,
+				bj:false,
+				taskList:[
+				{
+					id:1,
+
+					//是否完成
+					isOver:false,
+					single:'我是你爹爹',
+				},
+				{
+					id:2,
+					//是否完成
+					isOver:false,
+					single:'我是你爹爹de老头',
+				}
+			]
+			},
+			methods: {
+				flages(){
+					this.flag = !this.flag
+					console.log(this.flag)
+				},
+				add (){
+					// console.log(this.taskList.length)
+					this.taskList.push({
+						id:this.taskList.length+1,
+						isChecked:false,
+						//是否完成
+						isOver:false,
+						single:this.wantOver,
+					})
+
+				},
+				dbClick (ids) {
+					console.log(ids)
+					this.taskList[ids-1].single = this.testT
+					this.bj = !this.bj
+					console.log(this.bj)
+				},
+				deletList(idcast){
+					console.log(idcast)
+					for(var i=0 ; i<this.taskList.length ; i++){
+						// console.log(i)
+						if(this.taskList[i].id == idcast){
+							console.log(123)
+							this.taskList.splice(i, 1)
+						}
+					}
+
+
+				}
+
+			}
+		})
+
+
+
+
+
+		</script>
+		<!-- <script src="js/mv.js"></script> -->
+	</body>
+</html>
