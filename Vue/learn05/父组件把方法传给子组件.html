@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 父组件向子组件传递的方法 使用的是  事件绑定机制  v-on  当我们绑定一个事件属性后  子组件能够通过默写方式 调用 传递进去的这个方法了 -->
+            <com2 @func="show"></com2>
+
+
+        </div>
+
+
+
+        <template id="tmpl">
+            <div>   
+                <h1>这是子组件!!!</h1>
+                <input type="button" value="子组件中的按钮 - 点击它触发 父级别的方法" @click="myclick">
+            </div>
+        </template>
+
+
+
+
+        <script>
+            //var 
+            var com2 = {
+                template:'#tmpl',  //指定模板的字符串
+                data (){
+                    return {
+                        song:{
+                            name:'狗币' , age:20
+                        }
+                    }
+                },
+                methods: {
+                    myclick(){
+                        // 当点击子组件按钮   调用 父级传递的方法
+                        this.$emit('func' , this.song , 100)
+
+                    }   
+                }
+
+            }
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    datamsgFormSon:null
+                },
+                methods:{
+                    show(data,res){
+                        // console.log(123)
+                        console.log(data , res)
+                        this.datamsgFormSon = data
+                    }
+                },
+                components:{
+                    com2:com2
+                }
+            })
+        </script>
+    </body>
+</html>

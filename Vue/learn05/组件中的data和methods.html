@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <mycom1></mycom1>
+        </div>
+        
+
+
+        <script>
+
+            //组件有自己的 data数据
+            // 组建的data  和实例 的data  有点不一样  实例中的  data可以为一个对象 但是 组件中的data  必须是一个方法
+            // 组件中的data  除了必须为一个方法外  这个方法的额你不  返还必须为一个对象才行
+            // 组件中的data 数据  使用方式 和实例 中的data 使用方式完全一样
+            Vue.component('mycom1',{
+                template: '<h1> 我是全局组件 ----{{msg}} </h1>',
+                data:function(){
+                    return {
+                        msg: '这是组件中自己定义的数据!'
+                    }
+                }
+            })
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+
+                },
+                methods: {
+                    
+                }
+            })
+        </script>
+    </body>
+</html>

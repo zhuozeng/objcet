@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+
+            <!-- <com></com> -->
+            <mycom></mycom>
+        </div>
+        <script>
+            // 1.1  使用 Vue.extend  来拿创建全局的  Vue组件
+
+            // let com = Vue.extend({
+            //     template:'<h1>com组件模块代码!!!</h1>'  //通过template 属相制定了 组件要展示的html结构
+            // })
+            // 使用  Vue.component('组件名称' , 创建出来的饿组件模板 对象)
+            // Vue.component('com' , com)
+            // 如果使用  vue.component 定义全局组件的时候  组件名称使用了  驼峰命名法
+            // 则在引用条件 的时候  则 把 大写的驼峰命名改为小写字母 同时 两个单词之间使用 -  连接
+            // 如果不使用  驼峰  则名称直接来使用即可
+
+            // Vue.component  第一个参数 : 组件名称 在将来引用组件的时候  是以标签的形式来引入他
+            // 第二个参数  :  Vue.extend  创建的组件  其中  template  就是组件将来要展示的html内容
+
+            Vue.component('mycom' , {
+                template: '<h1>com组件模块代码!!!爸爸回来了!</h1>'
+            })
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+
+                },
+                methods: {
+
+                }
+            })
+        </script>
+    </body>
+</html>

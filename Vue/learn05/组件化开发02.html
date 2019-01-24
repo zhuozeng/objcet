@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 使用标签的形式  引入自己的组件 -->
+            <mycom></mycom>   
+      
+        </div>
+        <script>
+            // 注意   不论哪种方式创建的组件  组件的template  属性指向的模板  有 且只有一个唯一的根元素
+            Vue.component('mycom' , {
+                template : `<div><h2>这里是直接使用  Vue.template 创建出来的饿模板内容</h2></div>`
+            })
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+
+                },
+                methods: {
+
+                }
+            })
+        </script>
+    </body>
+</html>

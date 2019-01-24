@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <login></login>
+        </div>
+
+
+        <script>
+
+        var login = {
+            template : '<h3> 我是登录组件 </h3>'
+        }            
+
+        Vue.component('login' , login)
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                }
+                //components  加  s
+                // components:{
+                //     //组件名称  组件模板对象
+                //     // login:login
+                //     login
+                // }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="./vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 使用标签的形式  引入自己的组件 -->
+            <mycom01></mycom01> 
+      
+        </div>
+
+        <!-- 第二个 vue实例! -->
+        <div id="app2">
+            <login></login>
+        </div>
+
+        <!-- 在被控制的#app外部 使用 template  元素  定义组建的html模板结构 -->
+        <template id="tmp01">
+            <div>
+                <h2>我通过  template 元素 在外部定义的组件结构 有代码的智能提示 和高亮</h2>
+                <h4>
+                    感觉nice!
+                </h4>
+            
+            </div>
+        </template>
+
+        <!-- 定义私有的组件 -->
+        <template id="private">
+            <div>
+                <h1>这是私有的组件!!!!!啊啊啊啊啊</h1>
+                <h6>老子是私生子!</h6>
+            </div>
+        </template>
+
+
+        <script>
+            //这是全局组件使用
+            Vue.component('mycom01',{
+                template: '#tmp01'
+            })
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+
+                },
+                methods: {
+
+                }
+                
+            })
+
+
+            var vm2 =new Vue({
+                el:'#app2',
+                data:{},
+                methods:{},
+                //定义实例私有组件   private   注意是  components  多了个s  !!!
+                components: {
+                    //login  变为了  标签名
+                    login:{         //引用模板名
+                        template : '#private'
+                    }
+                }
+            })
+
+        </script>
+    </body>
+</html>
