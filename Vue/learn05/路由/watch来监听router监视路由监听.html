@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../vue.min.js"></script>
+        <script src="../vue-router-3.0.1.js"></script>
+        <style>
+            .router-link-active{
+                background-color: pink;
+                border-radius: 5px;
+            }
+            
+        
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <router-link to="login">登录</router-link>
+            <router-link to="regiest">注册</router-link>
+            <transition>
+                <!-- 首先布置容器 -->
+                <router-view></router-view>
+            </transition>
+            
+        </div>
+
+
+
+        <script>
+            // 创建 子组件
+            var login = {
+                template:'<h2> 我是登录组件 </h2>'
+            }
+
+            var regiest = {
+                template:'<h2> 我是注册组件 </h2>'
+            }
+
+            //创建一个路由 对象
+            var router = new VueRouter({
+                routes:[
+                    //路由规则数组
+                    {path:'/' , redirect:'/login'},
+                    {path:'/login' , component:login },
+                    {path:'/regiest' , component:regiest}
+                ]
+            })
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+
+                },
+                methods: {
+
+                },
+                router
+            })
+        </script>
+    </body>
+</html>

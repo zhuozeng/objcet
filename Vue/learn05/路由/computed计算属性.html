@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input type="text" v-model="firstName">+
+            <input type="text" v-model="firstMiddle">+
+            <input type="text" v-model="firstLast">=
+            <input type="text" v-model="endValue">
+
+            <p>{{  endValue }}</p>
+            <p>{{  endValue }}</p>
+
+            <p>{{  endValue }}</p>
+
+            
+        </div>
+
+
+        <script>
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    firstName:'',
+                    firstMiddle:'',
+                    firstLast:''
+                },
+                methods: {
+                    
+                },
+                computed: {
+                    // 在 computend中 可以定义一些  计算属性的  这些属性 我们叫做一个方法
+                    // 计算属性,  当做方法去调用
+
+                    // 1,注意  计算属性  引用的时候 一定不能加()  当做普通属性使用即可
+                    // 2, 注意  只要 计算属性 这个function内部  所用到data 中的数据发生了变化
+                    // 立即重新计算属性中的值
+
+                    // 注意3,  计算属性 求值结果  会被存储起来 方便下次直接使用 如果计算属性方法中 没有发生变化 不会重新计算
+
+                    endValue:function(){
+                        console.log(111)
+                        //注意 必须return  才会有结果!
+                        return this.firstName  + this.firstMiddle + this.firstLast 
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

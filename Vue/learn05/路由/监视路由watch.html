@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../vue.min.js"></script>
+        <script src="../vue-router-3.0.1.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <router-link to="login">登录!!!</router-link>
+            <router-link to="regiest">注册!!!</router-link>
+
+            <!-- 定义  路由容器 -->
+            <router-view></router-view>
+
+        </div>
+
+        <template id="loginTpl">
+            <div>
+                <h2>我是登录页面!组件</h2>
+            </div>
+        </template>
+
+        <template id="regiestTpl">
+                <div>
+                    <h2>我是注册页面!组件</h2>
+                </div>
+            </template>
+
+        <script>
+            //创建模板
+            var login = {
+                template:'#loginTpl'
+            }
+            var regiest = {
+                template:'#regiestTpl'
+            }
+
+
+
+            //  创建路由
+            const router = new VueRouter({
+                routes:[
+                    //设置进入根目录时的跳转地址
+                    {path:'/' , redirect:'/login'},
+                    {path:'/login' , component:login },
+                    {path:'/regiest' , component:regiest}
+                ],
+                //修改 a标签的  class
+                linkActiveClass:'myactive'
+                
+            })
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+
+                },
+                router:router,
+                watch: {
+                    //用于监听data里面的数据  和路由的变换
+                    //注意是 route
+                    //一般 是 '$routh'  我们这里写的是地址
+                    '$route.path':function(newVal , oldVal){
+                        console.log(newVal)
+                    }   
+                }
+            })
+        </script>
+    </body>
+</html>

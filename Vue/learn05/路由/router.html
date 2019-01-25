@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../vue.min.js"></script>
+        <script src="../vue-router-3.0.1.js"></script>
+    </head>
+    <body>
+        <div id="app">
+
+            <!-- 创建 容器 -->
+            <router-view></router-view>
+        </div>
+
+
+
+        <script>
+            // 创建子组件
+            var login = {
+                template:'<h3>我是登录子组件!!!!</h3>'
+            }
+
+            var register = {
+                template:'<h3>我是注册页面!!!!</h3>'
+            }
+
+
+            //创建一个路由对象
+             const router = new VueRouter({
+                routes: [
+                    //路由规则
+                    //当 请求根路径时    手动指定跳转页面  用户体验好
+                    {path : '/' , redirect:'/login'},
+                    {path:'/login' , component:login},
+                    {path:'/register' , component:register}
+                ]
+            })
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+
+                },
+                // router:router
+                router
+            })
+        </script>
+    </body>
+</html>
