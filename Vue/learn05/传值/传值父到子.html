@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <com1 v-bind:parentmsg = "msg"></com1>
+            <!-- <com1 v-bind:value = "msg"></com1> -->
+
+        </div>
+
+
+        <script>
+         
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg:'我是父组件的数据!!'
+                },
+                methods: {
+                    
+                },
+                components:{
+                    com1 :{
+                        data(){ //注意  子组件中的data数据 是私有数据  (可读可写)
+
+                        },
+
+                        template:'<h2>我是子组件数据-----{{ parentmsg }}</h2>',
+                        props:['parentmsg']   //把父组件中传递过来的数据  先在props 定义  然后再使用(props是只读的)
+                    }
+                    
+                }
+            })
+        </script>
+    </body>
+</html>

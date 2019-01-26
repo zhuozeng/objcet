@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <login v-bind:pmsg="msg" ></login>
+        </div>
+
+        <template id="tmpl">
+            <div>   
+                <h2>我是子组件! --- {{ }}</h2>
+            </div>
+        </template>
+
+        <script>
+
+            var com = Vue.component('login',{
+                template:'#tmpl',
+                props:['pmsg'],
+                data(){
+                    return {
+                        pmsg:'我是子组件!数据'
+                    }
+                }
+            })
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg:'我是父级数据!'   
+                },
+                components:{
+                    com:com
+                }
+            })
+
+        </script>
+    </body>
+</html>

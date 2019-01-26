@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../vue.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <com1 v-on:func="show"></com1>
+
+        </div>
+
+        <template id="tmpl1">
+            <div>
+                <h2>我是子组件!</h2>
+                <input type="button" @click="binclick" value="我是子组件的按钮 点击我触发父级别传递过来的事件!">
+            </div>
+        </template>
+
+        <script>
+            //此demo  子组件可以调用父级的方法
+            //子组件传的参数   父级可以接受到!!!
+
+
+            //子组件模板
+            var com1={
+                template:'#tmpl1',
+                data(){
+                    return {
+                        xiao:{name:'狗币' , age:15},
+                        zs:{name:'ik' , age:56}
+                    }
+                },
+                methods: {
+                    binclick(){
+                        //当点击子组件方法如何触发父组件传递过来的方法??
+                        // emit  英文翻译:  触发 调用  发射的意思
+
+                        console.log('ok!')
+
+                        //不仅可以调用方法  从第二个参数开始  可以传给父级的数据!!
+                        // this.$emit('func',123 , 852)
+
+                        this.$emit('func' , this.xiao)
+
+                    }
+                }
+            }
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    datamsgFrom:null
+                },
+                methods: {
+                    show(data,data2){
+                        //可以接受到子组件的 数据
+                        this.datamsgFrom = data
+                        console.log('调用了父组件的 show方法!' , data)
+                    }
+                },
+                components:{
+                    com1:com1,
+                    
+                }
+            })
+        </script>
+    </body>
+</html>

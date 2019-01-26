@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="../vue.min.js"></script>
+        <script src="../vue-router-3.0.1.js"></script>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+          
+        
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 创建  router -->
+            <router-view></router-view>
+        </div>
+
+        <!-- 创建模板 -->
+        <template id="tmpl">
+            <div>   
+                <h3>我是私有数据, 我是列表页</h3>
+                <h4>{{newslist[2].title}}</h4>
+                <ul>
+                    <!--  router-link  必须要  to -->
+
+                    <!-- to 属性最终是  /newsInfo?id=1   -->
+                    <!-- 属性绑定的作用 :  将to 属性的值作为表达式来解析,在to  属性的值中 可以写js代码 -->
+
+                    <!-- 如果没有加属性绑定 直接写  "'/newsInfo/'+item.id"  将会当做字符串解析 -->
+
+                    <!-- query传参 -->
+                    <router-link
+                     
+                     v-for="item in newslist"
+                     :key="item.id"
+                     tag="li"
+                     :to="'/newsInfo/?id='+item.id"  >
+                            <p>{{item.title}}</p>
+                            <p>{{item.content}}</p>
+                    </router-link>
+
+
+
+                    <!-- params 传参 -->
+                    <!-- <router-link
+                     
+                     v-for="item in newslist"
+                     :key="item.id"
+                     tag="li"
+                     :to="'/newsInfo/'+item.id"  >
+                            <p>{{item.title}}</p>
+                            <p>{{item.content}}</p>
+                    </router-link> -->
+
+                </ul>               
+            </div>
+        </template>
+
+        <!-- 这是详情页面 -->
+
+        <template id="templs">
+            <div>
+                <h2>这是详情页面!!!!!--- {{ $route.query.id}}</h2>
+            </div>
+        </template>
+
+        <script>
+
+            // 列表页组件
+            let newsListContent = {
+                template:'#tmpl',
+                data(){
+                    return {
+                        newslist: [
+                            { id: 1, title: '巨大新闻!!!', content: '素馅熊今年十八了!成年了!三年以上了解一下!' },
+                            { id: 2, title: '特大新闻!!!', content: '肉馅熊今年二八了!还没娶老婆!' },
+                            { id: 3, title: '特大新闻!!!', content: '肉馅熊今年二八了!还没娶老婆!' },
+                            { id: 4, title: '特大新闻!!!', content: '肉馅熊今年二八了!还没娶老婆!' },
+                            { id: 5, title: '特大新闻!!!', content: '肉馅熊今年二八了!还没娶老婆!' },
+                            { id: 6, title: '特大新闻!!!', content: '肉馅熊今年二八了!还没娶老婆!' },
+                            { id: 7, title: '特大新闻!!!', content: '肉馅熊今年二八了!还没娶老婆!' },
+                        ]
+                    }
+                }
+            }
+            //详情页组件
+            let newInfo={
+                template:'#templs',
+                created() {
+                    console.log(this.$route)   
+                }
+            }
+
+
+            //创建路由实例
+            let router = new VueRouter({
+                routes:[
+                    {path:'/' , redirect:'/newslist'},
+                    {path:'/newslist' , component:newsListContent},
+                    // 使用  query 传参  不需要修改路由配置规则
+                    {path:'/newsInfo',component:newInfo}
+
+                    //使用 params传参 需要修改路由的配置规则,必须严格按照路由规则去匹配
+                   // {path:'/newsInfo/:id' , component:newsListContent}
+                ]
+            })
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+
+                },
+                components:{
+
+                },
+                router  //将创建的路由挂载
+            })
+        </script>
+    </body>
+</html>
