@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+
+
+        </div>
+        <script>
+            
+            var vm = new Vue({
+                el: '#app',
+                // 如果加上模板会自动渲染
+                template:"<p>{{this.msg}}</p>",
+                data: {
+                    msg:'hello world',
+                    hello:'i want see you'
+                },
+                beforeCreate() {
+                    console.log("beforCreat")
+                },
+                created() {
+                    console.log("created")  
+                    console.log(this.$el);
+                     
+                },
+                beforeMount() {
+                    console.log("beforMount")
+                    console.log(this.$el)
+                },
+                mounted() {
+                    console.log("mounted")
+                    console.log(this.$el)
+                    // this.msg = this.hello
+                    // 改变data里面的数据,就会触发beforUpdate , updateed
+
+                },
+                beforeDestroy() {
+                    console.log('beforDestroy')
+                },
+                destroyed() {
+                    console.log('destroy')
+                },
+                beforeUpdate() {
+                    console.log('beforeUpdate触发了!')
+                },
+                updated() {
+                    console.log('updata触发了!')
+                },
+
+                
+            })
+        </script>
+    </body>
+</html>

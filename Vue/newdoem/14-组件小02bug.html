@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tbody>
+
+                <!-- <tr is="row"></tr>
+                <tr is='row'></tr> -->
+
+
+                <hr>
+                <tr is='rows'></tr>
+                <tr is='rows'></tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script>
+        // Vue.component('row' , {
+        //     data:{
+        //         content:'我是错误的实例!'
+        //     },
+        //     template:'<tr><td>{{content}}</td></tr>'
+        // })
+
+           Vue.component('rows' , {
+            data(){
+                return {content:'我是正确实例的想写法!'}
+            },
+            template:'<tr><td>{{content}}</td></tr>'
+        })
+        var vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

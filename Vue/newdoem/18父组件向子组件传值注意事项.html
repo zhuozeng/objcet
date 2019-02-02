@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+                <h2> 父组件向子组件传值,如果使用v-bind 绑定,则传递的就是数字类型</h2>
+                <item2 :conter="msg"></item2>
+                <item2 :conter="msg2"></item2>
+    
+
+        </div>
+        <script>
+            var  item = {
+                props:["conter"],
+                template:"<div @click='addData'>{{conter}}</div>",
+                created() {
+                    console.log(typeof(this.conter))   
+                },
+                data(){
+                    return {
+                        num: this.conter
+                    }
+                },
+                methods: {
+                    addData(){
+                        //vue 里面 强烈建议不要去修改父组件向子组件传递过来的数据
+                        //请先在data内部接收 再使用
+                        console.log(this.conter)
+                        console.log(this.num)
+                        this.num++
+                    }   
+                }
+            }
+            
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg:1111,
+                    msg2:2222
+                },
+                components:{
+                    item2:item
+                }
+            })
+        </script>
+    </body>
+</html>

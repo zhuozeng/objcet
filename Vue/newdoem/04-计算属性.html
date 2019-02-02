@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            {{full}}
+            <div>{{msg}}</div>
+        </div>
+        <script>
+            
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    first:'you',
+                    last:'are',
+                    msg:'ok!'
+                },
+                computed: {
+                    full(){
+                        console.log('拼接!')
+                        return this.last + this.first
+                    }
+                },
+                methods: {
+                    change(){
+                        setTimeout(()=>{
+                            this.msg = '我是大美丽'
+                        },2000)
+                    }   
+                },
+                mounted() {
+                    this.change()   
+                }
+
+            })
+        </script>
+    </body>
+</html>

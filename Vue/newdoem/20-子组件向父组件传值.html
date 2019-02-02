@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 02 在元素中定义好 @子组件中要调用的函数名="父级的函数名" -->
+            <item :conter="5" @fasong="jieshou"></item>
+
+        </div>
+        <script>
+            var item = {
+                // 03 定义props 这是个数组
+                props:['conter'],
+                data(){
+                    return {
+                        num:this.conter,
+                        obj:{name:"zsd",age:"15",gender:'男'}
+                    }
+                },
+                //子组件调用父组件的方法 并向父组件传值
+                template:`<div @click="addData">{{num}}</div>`,
+                methods: {
+                    addData(){
+                        console.log(this.conter , "this.conter 是")
+                        //使用  this.$emit  来调用传过来的函数  从第二个参数起 可以传递数据给父级别
+                        this.$emit('fasong', 11111,this.obj)
+                    }   
+                }
+            }
+            
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    total:2
+                },
+                methods:{
+
+                    // 01  在父级中定义好 要被调用的方程 
+                    //参数为接收到的数据
+                    jieshou(step , obj){
+                        console.log(step , obj)
+                        this.total+=step
+
+
+                    }
+
+
+                },
+                components:{
+                    item
+                }
+            })
+        </script>
+    </body>
+</html>

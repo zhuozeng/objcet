@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p @click="show">{{msg}}</p>
+
+        </div>
+        <script>
+            // 定义全局组件
+            Vue.component('iitem' , {
+                template:'<h3>你好啊!</h3>'
+            })
+            
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg:"are you ok?"
+                },
+                methods: {
+                    show(){
+                        alert(123)
+                    }   
+                }
+            })
+        </script>
+    </body>
+</html>
