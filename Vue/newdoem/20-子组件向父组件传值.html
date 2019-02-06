@@ -19,7 +19,9 @@
                 data(){
                     return {
                         num:this.conter,
-                        obj:{name:"zsd",age:"15",gender:'男'}
+                        obj:{name:"zsd",age:"15",gender:'男',seyhai:function(){
+                            console.log('123321!!!')
+                        }}
                     }
                 },
                 //子组件调用父组件的方法 并向父组件传值
@@ -28,7 +30,7 @@
                     addData(){
                         console.log(this.conter , "this.conter 是")
                         //使用  this.$emit  来调用传过来的函数  从第二个参数起 可以传递数据给父级别
-                        this.$emit('fasong', 11111,this.obj)
+                        this.$emit('fasong', 11111,this.obj,this.obj.seyhai())
                     }   
                 }
             }
