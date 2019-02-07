@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <item content="hello world"></item>
+            <item :content="'hou bi dong xi'"></item>
+            <item :content="msg"></item>
+
+        </div>
+        <script>
+            Vue.component('item' , {
+                props:{
+                    content:{
+                        type:[String , Number],
+                        required:true,  //表示父组件必须要传递值,如果没有 就会警告
+                        default:'sayhi!',//表示父组件 没有传递值时候的默认
+                        validator(val){
+                            return  val.length > 5
+                        }
+                    }
+                   
+                },
+                template:'<div> {{content}} </div>'
+            })
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg:'我是你爹'
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+
+            <child :content="msg"></child>
+
+        </div>
+        <script>
+            Vue.component('child' , {
+                props:{
+                    content:[Number , String]   //只接受 数字 字符串类型
+                },
+                template:"<div>{{  content }}</div>"
+
+            })
+
+
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg:22222
+                }
+            })
+        </script>
+    </body>
+</html>
