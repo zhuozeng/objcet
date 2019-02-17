@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./animate.css">
+    <script src="vue.js"></script>
+
+
+
+</head>
+
+<body>
+    <div id="app">
+        <transition  appear enter-active-class="animated swing" leave-active-class='animated shake'>
+            <div v-show="flag">hello world!</div>
+            <!-- 属性中添加 appear  可以让打开浏览器就有动画! -->
+        </transition>
+        <button @click="change">点击切换</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {
+                change() {
+                    this.flag = !this.flag
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
